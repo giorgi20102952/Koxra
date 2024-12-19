@@ -1,0 +1,246 @@
+/* style.css */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.signup-container {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+}
+
+h2 {
+    text-align: center;
+}
+
+form div {
+    margin-bottom: 15px;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+p {
+    text-align: center;
+    font-size: 14px;
+    color: #f44336;
+}
+#regForm input {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+#regForm button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#regForm button:hover {
+    background-color: #45a049;
+}
+  
+body {
+    background-color: rgb(29, 0, 37);
+}
+.logo {
+    width: 300px;
+    position:absolute;
+    top: 4%;
+    left: 10%;
+}
+.banner-btn{
+    margin: 70px auto 0;
+    text-align: left;
+    
+    
+}
+.banner-btn a {
+width:  150px;
+text-decoration:none;
+display:inline-block;
+margin: 0px 10px;
+padding: 12px 0;
+color: rgb(255, 0, 242);
+border: .5px solid #ffffff;
+text-align: center;
+text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.6), 0 0 30px rgba(255, 255, 255, 0.4);
+z-index: 1;
+transition: color 0.5s;
+
+}
+.banner-btn a:hover {
+
+transform: scale(1.1); /* ბუტონის ზომის ზრდა */
+background-color: #00eeff; /* ფერის ცვლილება */
+transition: 0.5s;
+}
+/* მაუსის ჩამოწევისას ბუტონი არ დაბრუნდება ეგრევე, არამედ თანდათან */
+.banner-btn a {
+transition: transform 0.6s ease, background-color 0.6s ease; /* დროის ტრანზიცია */
+}
+
+/* ბუტონზე მაუსის ჩამოწევის შემდეგ ფერის დაბრუნება */
+.banner-btn a:active {
+background-color: #3498db; /* საწყისი ფერი */
+transform: scale(1); /* ზომის დაბრუნება */
+}.banner-btn{
+    margin: 70px auto 0;
+    text-align: center;
+    
+    
+}
+.banner-btn a {
+width:  150px;
+text-decoration:none;
+display:inline-block;
+margin: 0 10px;
+padding: 12px 0;
+color: rgb(255, 0, 242);
+border: .5px solid #ffffff;
+text-align: center;
+text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.6), 0 0 30px rgba(255, 255, 255, 0.4);
+z-index: 1;
+transition: color 0.5s;
+
+}
+.bannera-btn a:hover {
+
+transform: scale(1.1); /* ბუტონის ზომის ზრდა */
+background-color: #00eeff; /* ფერის ცვლილება */
+transition: 0.5s;
+}
+/* მაუსის ჩამოწევისას ბუტონი არ დაბრუნდება ეგრევე, არამედ თანდათან */
+.bannera-btn a {
+transition: transform 0.6s ease, background-color 0.6s ease; /* დროის ტრანზიცია */
+}
+
+/* ბუტონზე მაუსის ჩამოწევის შემდეგ ფერის დაბრუნება */
+.bannera-btn a:active {
+background-color: #3498db; /* საწყისი ფერი */
+transform: scale(1); /* ზომის დაბრუნება */
+}
+.bannera-btn{
+    margin: 70px auto 0;
+    text-align: left;
+    
+    
+}
+.bannera-btn a {
+width:  150px;
+text-decoration:none;
+display:inline-block;
+margin: 0px 10px;
+padding: 12px 0;
+color: rgb(255, 0, 242);
+border: .5px solid #ffffff;
+text-align: center;
+text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.6), 0 0 30px rgba(255, 255, 255, 0.4);
+z-index: 1;
+transition: color 0.5s;
+
+}
+.bannera-btn a:hover {
+
+transform: scale(1.1); /* ბუტონის ზომის ზრდა */
+background-color: #00eeff; /* ფერის ცვლილება */
+transition: 0.5s;
+}
+/* მაუსის ჩამოწევისას ბუტონი არ დაბრუნდება ეგრევე, არამედ თანდათან */
+.bannera-btn a {
+transition: transform 0.6s ease, background-color 0.6s ease; /* დროის ტრანზიცია */
+}
+
+/* ბუტონზე მაუსის ჩამოწევის შემდეგ ფერის დაბრუნება */
+.bannera-btn a:active {
+background-color: #3498db; /* საწყისი ფერი */
+transform: scale(1); /* ზომის დაბრუნება */
+}.bannera-btn{
+    margin: 70px auto 0;
+    text-align: center;
+    
+    
+}
+.bannera-btn a {
+width:  150px;
+text-decoration:none;
+display:inline-block;
+margin: 0 10px;
+padding: 12px 0;
+color: rgb(255, 0, 242);
+border: .5px solid #ffffff;
+text-align: center;
+text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.6), 0 0 30px rgba(255, 255, 255, 0.4);
+z-index: 1;
+transition: color 0.5s;
+
+}
+.bannera-btn a:hover {
+
+transform: scale(1.1); /* ბუტონის ზომის ზრდა */
+background-color: #00eeff; /* ფერის ცვლილება */
+transition: 0.5s;
+}
+/* მაუსის ჩამოწევისას ბუტონი არ დაბრუნდება ეგრევე, არამედ თანდათან */
+.bannera-btn a {
+transition: transform 0.6s ease, background-color 0.6s ease; /* დროის ტრანზიცია */
+}
+
+/* ბუტონზე მაუსის ჩამოწევის შემდეგ ფერის დაბრუნება */
+.bannera-btn a:active {
+background-color: #3498db; /* საწყისი ფერი */
+transform: scale(1); /* ზომის დაბრუნება */
+}
+.account-box {
+    padding: 20px;
+    background-color: #f1f1f1;
+    border-radius: 10px;
+    text-align: center;
+    width: 200px;
+    margin: auto;
+    margin-top: -400px  ;
+    margin-right: -450px;
+}
+
+.account-box img {
+    border-radius: 50%;
+    margin-bottom: 10px;
+    width: 100px; /* განსაზღვრული ზომა */
+    height: 100px; /* თუ საჭირო იქნება */
+    object-fit: cover; /* გასწორება და მასშტაბირება */
+    display: none; /* საწყისი მდგომარეობა - ფოტო არ ჩანს */
+}

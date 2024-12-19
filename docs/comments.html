@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="comments.css">
+    <title>კომენტარების სისტემა</title>
+    <style>
+        .comment-box { border: 1px solid #ccc; margin-bottom: 10px; padding: 10px; }
+        .reply-box { border-left: 2px solid #ccc; margin-left: 20px; padding-left: 10px; }
+    </style>
+</head>
+<body>
+    <h2>კომენტარები</h2>
+    <div class="banner-btn">
+        <a href="index.html">Back</a> <div class="banner-btn">
+            
+        
+    <div class="right-links">
+        <!-- აქ მომხმარებლის სახელის და ლოგაუთის ბოქსია -->
+        <div id="account-box" style="display:none;">
+            <div class="account-container">
+                <p id="username-display"></p>
+                <button onclick="logout()" class="btn">Log Out</button>
+            </div>
+        </div>
+          <!-- რეგისტრაციის ფორმა -->
+          <div id="register-form">
+            <h3>რეგისტრაცია</h3>
+            <input type="text" id="new-username" placeholder="მომხმარებლის სახელი">
+            <input type="password" id="new-password" placeholder="პაროლი">
+            <button onclick="register()">რეგისტრაცია</button>
+        </div>
+    </div>
+
+        <!-- ლოგინის ფორმა -->
+        <div id="login-form">
+            <input type="text" id="username" placeholder="მომხმარებლის სახელი">
+            <input type="password" id="password" placeholder="პაროლი">
+            <button onclick="login()">შესვლა</button>
+        </div>
+
+      
+
+    <div id="comment-form" style="display: none;">
+        <textarea id="comment-text" placeholder="დაწერე კომენტარი..." rows="4" cols="50"></textarea>
+        <button onclick="postComment()">გამოაგზავნე</button>
+    </div>
+
+    <div id="comments-section"></div>
+
+    <script>
+        let currentUser = localStorage.getItem('username');  // მიღებული მომხმარებელი localStorage-დან
+        let comments = JSON.parse(localStorage.getItem('comments')) || [];  // კომენტარები localStorage-დან
+        let users = JSON.parse(localStorage.getItem('users')) || [];  // მომხმარებლები
+
+        // მომხმარებლის სახელი თუ არის, გამოაჩენენ საიტზე
+        if (currentUser) {
+            document.getElementById('account-box').style.display = 'block';
+            document.getElementById('username-display').innerText = `მომხმარებელი: ${currentUser}`;
+            document.getElementById('login-form').style.display = 'none';
+            document.getElementById('register-form').style.display = 'none';
+            document.getElementById('comment-form').style.display = 'block';
+            loadComments();
+        } else {
+            document.getElementById('login-form').style.display = 'block';
+            document.getElementById('register-form').style.display = 'block';
+        }
+
+        // რეგისტრაცია
+        function register() {
+            const newUsername = document.getElementById("new-username").value;
+            const newPassword = document.getElementById("new-password").value;
+
+            if (newUsername && newPassword) {
+                // ახალი მომხმარებლის დამატება
+                const user = { username: newUsername, password: newPassword };
+                users.push(user);
+                localStorage.setItem('users', JSON.stringify(users));  // შენახვა localStorage-ში
+                alert("რეგისტრაცია წარმატებით დასრულდა!");
+                document.getElementById("new-username").value = "";
+                document.getElementById("new-password").value = "";
+            } else {
+                alert("გთხოვთ, შეიყვანოთ მომხმარებლის სახელი და პაროლი.");
+            }
+        }
+
+        // ლოგინი
+        function login() {
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+
+            // მომხმარებლის ძებნა და პაროლის გადამოწმება
+            const user = users.find(u => u.username === username && u.password === password);
+
+            if (user) {
+                currentUser = username;
+                localStorage.setItem('username', currentUser);  // სახელი ინახება localStorage-ში
+                document.getElementById('account-box').style.display = 'block';
+                document.getElementById('username-display').innerText = `მომხმარებელი: ${currentUser}`;
+                document.getElementById('login-form').style.display = 'none';
+                document.getElementById('register-form').style.display = 'none';
+                document.getElementById('comment-form').style.display = 'block';
+                loadComments();
+            } else {
+                alert("არასწორი მომხმარებლის სახელი ან პაროლი.");
+            }
+        }
+
+        // კომენტარის დაწერა
+        function postComment() {
+            const commentText = document.getElementById("comment-text").value;
+            if (commentText && currentUser) {
+                const comment = {
+                    id: comments.length + 1,
+                    username: currentUser,
+                    text: commentText,
+                    replies: [],
+                    timestamp: new Date()
+                };
+                comments.push(comment);
+                localStorage.setItem('comments', JSON.stringify(comments));  // კომენტარების შენახვა
+                document.getElementById("comment-text").value = "";  // textarea ცარიელდება
+                loadComments();
+            } else {
+                alert("თქვენ უნდა დარეგისტრირდეთ და მოაწეროთ კომენტარი!");
+            }
+        }
+
+        // კომენტარის წაშლა
+        function deleteComment(id) {
+            comments = comments.filter(comment => comment.id !== id);
+            localStorage.setItem('comments', JSON.stringify(comments));  // განახლებული კომენტარები ინახება
+            loadComments();
+        }
+
+        // კომენტარის რეფლიუ
+        function replyToComment(commentId) {
+            const replyText = prompt("შეიყვანეთ პასუხი:");
+            if (replyText) {
+                const reply = {
+                    username: currentUser,
+                    text: replyText,
+                    timestamp: new Date()
+                };
+                const comment = comments.find(c => c.id === commentId);
+                comment.replies.push(reply);
+                localStorage.setItem('comments', JSON.stringify(comments));  // კომენტარი განახლდება
+                loadComments();
+            }
+        }
+
+        // კომენტარების რეფრეშის შემდეგ ლოდინი
+        function loadComments() {
+            const commentsSection = document.getElementById("comments-section");
+            commentsSection.innerHTML = "";
+
+            comments.forEach(comment => {
+                const commentDiv = document.createElement("div");
+                commentDiv.classList.add("comment-box");
+                commentDiv.innerHTML = `
+                    <strong>${comment.username}</strong> (დაემატა: ${comment.timestamp.toLocaleString()})<br>
+                    <p>${comment.text}</p>
+                    ${comment.username === currentUser ? `<button onclick="deleteComment(${comment.id})">წაშლა</button>` : ""}
+                    <button onclick="replyToComment(${comment.id})">პასუხის გაგზავნა</button>
+                    <div class="reply-box">
+                        ${comment.replies.map(reply => `
+                            <div><strong>${reply.username}</strong>: ${reply.text} (დაემატა: ${reply.timestamp.toLocaleString()})</div>
+                        `).join('')}
+                    </div>
+                `;
+                commentsSection.appendChild(commentDiv);
+            });
+        }
+
+        // ლოგაუთი
+        function logout() {
+            localStorage.removeItem('username');
+            currentUser = null;
+            document.getElementById('account-box').style.display = 'none';
+            document.getElementById('login-form').style.display = 'block';
+            document.getElementById('register-form').style.display = 'block';
+            document.getElementById('comment-form').style.display = 'none';
+            document.getElementById('comments-section').innerHTML = '';
+        }
+        function register() {
+    const newUsername = document.getElementById("new-username").value;
+    const newPassword = document.getElementById("new-password").value;
+
+    if (newUsername && newPassword) {
+        // Проверка на существование пользователя с таким именем
+        const existingUser = users.find(u => u.username === newUsername);
+        if (existingUser) {
+            alert("ეს მომხმარებლის სახელი უკვე დაკავებულია. გთხოვთ, აირჩიოთ სხვა.");
+            return; // არ უშვებს რეგისტრაციას, თუ სახელია დაკავებული
+        }
+
+        // ახალი მომხმარებლის დამატება
+        const user = { username: newUsername, password: newPassword };
+        users.push(user);
+        localStorage.setItem('users', JSON.stringify(users));  // შენახვა localStorage-ში
+        alert("რეგისტრაცია წარმატებით დასრულდა!");
+        document.getElementById("new-username").value = "";
+        document.getElementById("new-password").value = "";
+    } else {
+        alert("გთხოვთ, შეიყვანოთ მომხმარებლის სახელი და პაროლი.");
+    }
+}
+    </script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="Sing-In.css">
+</head>
+<body>
+    <div class="container">
+        <div class="box form-box">
+            <header>Login</header>
+            <!-- Corrected form structure -->
+            <form action="" method="post">
+                <div class="field input">
+                    <label for="username">Username</label>
+                    <input type="text" name="username" id="username" required>
+                </div>
+
+                <div class="field input">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password" required>
+                </div>
+
+                <div class="field">
+                    <input type="submit" class="btn" name="submit" value="Login" required>
+                </div>
+            </form>
+            <div class="links">
+                 <a href="Forgot-password.html">Forgot Password</a>
+            </div>
+            <div class="links">
+                Don't have an account? <a href="Sing-Up.html">Sign Up Now</a>
+            </div>
+        </div>
+    </div>
+    <script>
+        // ლოგინის ფუნქცია
+        document.querySelector("form").addEventListener("submit", function(event) {
+            event.preventDefault(); // თავიდან ავიცილოთ ფორმის გაგზავნა
+    
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+    
+            // ყველა რეგისტრირებული მომხმარებლის გამოკლება
+            let users = JSON.parse(localStorage.getItem("users")) || [];
+            const existingUser = users.find(user => (user.username === username || user.email === username) && user.password === password);
+    
+            if (existingUser) {
+                // შეინახოს მომხმარებლის მონაცემები სესიაში
+                localStorage.setItem("userData", JSON.stringify(existingUser));
+                window.location.href = "index.html"; // გადაგიყვანს მთავარ გვერდზე
+            } else {
+                alert("არასწორი მონაცემები!");
+            }
+        });
+         // ფუქცია, რომელიც დააყენებს მომხმარებლის სტატუსს
+         let loggedIn = false; // შეგიძლიათ შეცვალოთ ამ ცვლადის სტატუსი თქვენი სერვერის მონაცემებით
+
+function checkLoginStatus() {
+}
+    </script>
+</body>
+</html>

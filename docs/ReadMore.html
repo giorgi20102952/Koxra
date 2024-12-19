@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="ReadMore.css">
+    <title>Game Information</title>
+</head>
+<body>
+    <div class="right-links">
+        <!-- აქ გამოსახული იქნება მომხმარებლის სახელი და ლოგაუთის ღილაკი -->
+        <div id="account-box" style="display:none;">
+            <div class="account-container">
+                <p id="username-display"></p>
+                <a href="edit.html">Change Profile</a>
+                <a href="Sing-Up.html"><button class="btn">Log Out</button></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <section id="banner">
+        <img src="MCII4025.PNG" class="logo">
+        <div class="banner-btn">
+            <a href="index.html">Back</a>
+            </div>
+         </div>
+   
+    <section class="tablut-section">
+        <div class="tablut">
+            <img src="gio.jpg" alt="Defenders" class="tablut-img">
+            <h2>Defenders</h2>
+            <div class="service-desc">  
+                 <hr>
+                <p>From the very beginning the attackers will try to restrict the defenders' access to various parts of the board. The defenders must do their best to prevent this by taking control of areas near the periphery, or better still, areas that connect the king's current position to the periphery. The attackers will have a harder time blocking out access to those parts of the board if the defenders already have a presence there.</p>
+            </div>
+        </div>
+
+        <div class="tablut">
+            <img src="gio.jpg" alt="Atackers" class="tablut-img">
+            <h2>Attackers</h2> 
+            <div class="service-desc">
+           
+           
+            <hr>
+            <p>The first aim of an attacking player should be to form a complete unbreakable ring around the king and all his forces. As long as this remains unbroken, the king can never escape. All he can hope to do is force a draw, or to hold off the attack for as long as possible in the hope that the attacker makes a mistake.
+            In games where the king exits at a corner, the edge of the board may itself be used as part of the blockade, as long as it leaves no route to either of the adjoining corners.</p>
+        </div>
+        </div>
+        <script>
+            window.onload = function() {
+                // შევამოწმოთ, თუ მომხმარებელი უკვე შიგნით არის
+                let user = JSON.parse(localStorage.getItem("userData"));
+                
+                if (user) {
+                    // გამოიყენება მომხმარებლის მონაცემები
+                    document.getElementById("account-box").style.display = "block"; // ჩარჩოს ხილვადობა
+                    document.getElementById("username-display").innerText = "Hello, " + user.username; // მომხმარებლის სახელი ჩადება
+                } else {
+                    document.getElementById("account-box").style.display = "none"; // თუ მომხმარებელი არ არის შესული, ჩარჩო არ ჩანს
+                }
+            };
+        
+            // ლოგ-აუთის ფუნქცია
+            document.querySelector(".btn").addEventListener("click", function() {
+                // მომხმარებლის მონაცემების წაშლა
+                localStorage.removeItem("userData");
+        
+                // გადაგიყვანს ლოგინ გვერდზე
+                window.location.href = "Sing-In.html"; 
+            });
+        </script>
+    
+</body>
+</html>

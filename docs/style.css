@@ -1,0 +1,272 @@
+/* ძირითადი სტილი */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", serif;
+}
+
+
+
+
+#banner {
+    background-image:url(battle-blur-board-game-challenge-2fdf475e4675d9650746204d09bbe43b.jpg);
+    background-size: cover;
+    background-position:center;
+    height: 100vh;
+    
+    
+    
+}
+
+
+
+
+
+h2 {
+    font-size: 3em;
+    color: #532121;
+    text-align: left;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.6), 0 0 30px rgba(255, 255, 255, 0.4);
+}
+.author {
+    color: #532121;
+    text-align: right;
+    
+}
+
+.author {
+    font-size: 1.2em;
+    margin-top: 10px;
+    color: white;
+}
+.logo {
+    width: 250px;
+    position: absolute;
+    top: -48%;
+    left: 10%;
+    margin-top: 320px;
+    
+}
+h1{
+    font-size: 140px;
+    text-align:center;
+    color: #532121;
+    font-family:Georgia,serif;
+    font-style: italic;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.6), 0 0 30px rgba(255, 255, 255, 0.4);
+
+}
+p{
+    font-size: 120px;
+    text-align: center;
+    color: aqua;
+    font-family:Georgia,serif;
+  font-style:italic;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.6), 0 0 30px rgba(255, 255, 255, 0.4);
+}
+.banner-btn{
+        margin: 70px auto 0;
+        text-align: center;
+        
+        
+}
+.banner-btn a {
+    width:  150px;
+    text-decoration:none;
+    display:inline-block;
+    margin: 0 10px;
+    padding: 12px 0;
+    color: rgb(255, 0, 242);
+    border: .5px solid #ffffff;
+    text-align: center;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.6), 0 0 30px rgba(255, 255, 255, 0.4);
+    z-index: 1;
+    transition: color 0.5s;
+    
+}
+.banner-btn a:hover {
+    
+    transform: scale(1.1); /* ბუტონის ზომის ზრდა */
+    background-color: #00eeff; /* ფერის ცვლილება */
+    transition: 0.5s;
+}
+    /* მაუსის ჩამოწევისას ბუტონი არ დაბრუნდება ეგრევე, არამედ თანდათან */
+.banner-btn a {
+    transition: transform 0.6s ease, background-color 0.6s ease; /* დროის ტრანზიცია */
+}
+
+/* ბუტონზე მაუსის ჩამოწევის შემდეგ ფერის დაბრუნება */
+.banner-btn a:active {
+    background-color: #3498db; /* საწყისი ფერი */
+    transform: scale(1); /* ზომის დაბრუნება */
+}
+    /* Play Game button container */
+.play-game-btn {
+    margin: 70px auto 0;
+    text-align: center;
+}
+
+/* Play Game button style */
+.play-game-btn a {
+    width: 150px;
+    text-decoration: none;
+    display: inline-block;
+    margin: 0 10px;
+    padding: 12px 0;
+    color: rgb(255, 0, 242);
+    border: 0.5px solid #ffffff;
+    text-align: center;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.6), 0 0 30px rgba(255, 255, 255, 0.4);
+    z-index: 1;
+    transition: color 0.5s, transform 0.6s ease, background-color 0.6s ease;
+}
+
+/* Play Game button hover effects */
+.play-game-btn a:hover {
+    transform: scale(1.1); /* Enlargement of button */
+    background-color: #00eeff; /* Change color on hover */
+}
+
+/* Play Game button active state (when clicked) */
+.play-game-btn a:active {
+    background-color: #3498db; /* Initial color */
+    transform: scale(1); /* Button returns to normal size */
+}
+#menuBtn {
+    position: fixed;
+    top: 20px;  /* ფიქსირებული ზემოდან */
+    right: 20px;  /* ფიქსირებული მარჯვნიდან */
+    cursor: pointer;
+    z-index: 1000; /* გადაამოწმებს, რომ ბუტონი პირველია სხვა ელემენტებთან შედარებით */
+    
+}
+
+#menu {
+    width: 50px;
+    height: 50px;
+    
+}
+
+/* მენიუ, თავიდან მოჩუქურთმულია და არ ჩანს */
+#menuNav {
+    display: none;  /* თავიდან არ ჩანს */
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 250px;
+    height: 100%;
+    background-color: #2c3e50;
+    color: white;
+    box-shadow: -2px 0px 5px rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    z-index: 999;  /* მენიუს, ფანჯარას სწორი ადგილმდებარეობა */
+    transition: 0.5s;
+   
+    
+}
+
+#menuNav ul {
+    list-style-type: none;
+    padding: 0;
+
+}
+
+#menuNav li {
+    margin: 20px 0;
+}
+
+#menuNav a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.2rem;
+}
+
+/* ეფექტი მენიუს გამოსაყენებლად */
+#menuNav.show {
+    display: block;  /* მენიუს გამოჩენა */
+   
+}
+.nav{
+    background: #fff;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    line-height: 60px;
+    z-index: 100;
+}
+.logo2{
+    font-size: 25px;
+    font-weight: 900;
+    
+}
+.logo2 a{
+    text-decoration: none;
+    color: #000;
+}
+.right-links a{
+    padding: 0 10px;
+   
+}
+/* Account box style */
+#account-box {
+    position: fixed;
+    top: 70px;
+    right: 1450px;
+    background:url(art.webp);
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: none;
+    z-index: 1000;
+    filter:brightness(5px)
+}
+
+.account-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.account-container p {
+    margin-bottom: 10px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.account-container .btn {
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.account-container .btn:hover {
+    background-color: #0056b3;
+}
+/* Image preview for profile */
+#profile-picture, #new-profile-picture {
+    margin-top: 10px;
+}
+
+input[type="file"] {
+    padding: 5px;
+    margin-top: 10px;
+    background-color: #f1f1f1;
+}
+
+/* Preview Image (optional, if you want to show the uploaded image) */
+img.preview-image {
+    max-width: 100px;
+    margin-top: 10px;
+}
+#preloader {
+    background: black url(ko1.gif) no-repeat center;
+    background-size: 100%;
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    z-index: 100;
+}

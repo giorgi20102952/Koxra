@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="Sing-In.css">
+</head>
+<body>
+    <div class="container">
+        <div class="box form-box">
+            <header>Sign Up</header>
+            <!-- Corrected form structure -->
+            <form action="" method="post">
+                <div class="field input">
+                    <label for="username">Username</label>
+                    <input type="text" name="username" id="username" autocomplete="off"   required>
+                </div>
+
+                <div class="field input">
+                    <label for="email">Email</label>
+                    <input type="text" name="email" id="email" autocomplete="off" required>
+                </div>
+               
+                <div class="field input">
+                    <label for="age">Age</label>
+                    <input type="number" name="age" id="age" autocomplete="off" required>
+                </div>
+                 
+                <div class="field input">
+                    <label for="profile-picture">Profile Picture</label>
+                    <input type="file" name="profile-picture" id="profile-picture" accept="image/*" required>
+                </div>
+    
+                <div class="field input">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password" autocomplete="off" required>
+                </div>
+
+                <div class="field">
+                    <input type="submit" class="btn" name="submit" value="Login" required>
+                </div>
+            </form>
+
+            <div class="links">
+                Already Have? <a href="Sing-In.html">Sing In</a>
+            </div>
+        </div>
+    </div>
+    <script>
+  
+     // რეგისტრაციის ფორმის მართვა
+     document.querySelector("form").addEventListener("submit", function(event) {
+        event.preventDefault(); // თავიდან ავიცილოთ ფორმის გაგზავნა
+
+        const username = document.getElementById("username").value;
+        const email = document.getElementById("email").value;
+        const age = document.getElementById("age").value;
+        const password = document.getElementById("password").value;
+
+        // შემოწმება, თუ უკვე დარეგისტრირებულია მომხმარებელი
+        let users = JSON.parse(localStorage.getItem("users")) || [];
+        const existingUser = users.find(user => user.email === email || user.username === username);
+
+        if (existingUser) {
+            alert("მომხმარებელი უკვე არსებობს! გამოიყენეთ სხვა მონაცემები.");
+            return;
+        }
+
+        // მომხმარებლის დამატება
+        users.push({ username, email, age, password });
+        localStorage.setItem("users", JSON.stringify(users));
+
+        alert("რეგისტრაცია წარმატებით დასრულდა!");
+        window.location.href = "Sing-In.html"; // გადაგიყვანს ლოგინ გვერდზე
+    });
+</script>
+   
+</body>
+</html>
